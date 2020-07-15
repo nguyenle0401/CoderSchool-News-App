@@ -1,16 +1,10 @@
 let newsList = []
+const apiKey = `fb79e1dd73084533b72be1bc6d99e5c0`
+
 let pageNumber = 1;
 
-// let moment = require('moment-timezone/builds/moment-timezone-with-data-2012-2022');
-// moment().format('MMMM Do YYYY, h:mm:ss a');
-
-
-// const apikey= process.env.APIKEY 
-// ${apikey}
-
-let apiKey = "0c6481951a6044e2b43b3dfccf075af5"
 const callApi = async () => {
-    let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=0c6481951a6044e2b43b3dfccf075af5`
+    let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`
     let data = await fetch(url)
     let result = await data.json()
     newsList = result.articles
@@ -82,9 +76,6 @@ async function searchByKeyWord() {
 }
 
 
-
-{/* <li class="list-group-item">Published at: ${publishedAt}</li> */ }
-
 //able to load more articles
 async function loadMore() {
     pageNumber++
@@ -93,6 +84,7 @@ async function loadMore() {
     newList = newList.concat(result.articles)
     render(newList)
 }
+
 
 
 //able to search by source
@@ -107,5 +99,12 @@ async function searchBySource() {
     console.log(url)
 }
 
+// async function pageSize() {
+//     let data = await fetch(`${url}&page=${pageSize}`)
+//     let result = await data.json()
+//     newList = result.articles
+//     render(newList)
+//     console.log(url)
+// }
 
 callApi();
