@@ -27,11 +27,13 @@ const render = (list) => {
           <h5 class="card-title style_title"><a href = "${item.url}">${item.title}</h5>
           <p class="card-text">${item.content}</p>
         </div>
+        <div>
         <ul class="list-group list-group-flush">
         <li class="list-group-item">${moment(item.publishedAt).fromNow()}</li>
         <li class="list-group-item">Source: ${item.source.name}</li>
         <li class="list-group-item">Author: ${item.author}</li>
         </ul>
+        </div>
         <div class="card-body">
         <a href="${item.url}" class="card-link btn btn-primary">Read more</a>
         </div>
