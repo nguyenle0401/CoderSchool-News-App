@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Google News📑</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
         integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
@@ -23,28 +23,28 @@
 
 <body>
     <nav>
-    <h1 class="style_name">Google News</h1>
-    <div class="style_find">
-        <input id="keyWord" class="mr-1 border-find" />
-        <button type="button" class="btn btn-danger" onclick="searchByKeyWord()"><i class="fas fa-search"></i></button>
-        <!-- <h1 id="pageSize"></h1> -->
-    </div>
-    <div class="style_find mt-3">
-        <input class="mr-1 border-source" id="searchBySource" type="text">
-        <button class="btn btn-danger" onclick="searchBySource()">Search by
-            Source</button>
-    </div>
-    <div class="style_find" id="categoryButton">
-
-    </div>
+        <h1 class="style_name">Google News</h1>
+        <div class="style_find">
+            <input id="keyWord" class="mr-1 border-find" />
+            <button type="button" class="btn btn-danger" onclick="searchByKeyWord()"><i
+                    class="fas fa-search"></i></button>
+            <!-- <h1 id="pageSize"></h1> -->
+        </div>
+        <div class="style_find mt-3 mb-3">
+            <input class="mr-1 border-source" id="searchBySource" type="text">
+            <button class="btn btn-danger" onclick="searchBySource()">Search by
+                Source</button>
+        </div>
+        <div class="style_find" id="categoryButton">Catagory</div>
+        <!-- <button class="btn btn-danger" onclick= "loadAllNew()">All News</button> -->
+        </div>
+        <div class="style_find1" id="newsListArea"></div>
+        <!-- <a href="#"  onclick="viewMore()">More</a> -->
+        <button class="btn btn-primary style_find2" onclick="viewMore()">Load More</button>
+        <a class="btn btn-danger style_find2" href="#" class="card-link">Back to the top</a>
     </nav>
-
-    <div class="style_find1" id="newsListArea"></div>
-
-            <button class="btn btn-primary" onclick= "loadMore()">Load More</button>
-
-            <script src="https://momentjs.com/downloads/moment.js"></script>
-            <script src="main.js"></script>
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+    <script src="main.js"></script>
 </body>
 
 
