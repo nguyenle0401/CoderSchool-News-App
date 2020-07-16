@@ -1,14 +1,12 @@
 let newsList = []
 let page = 1
 const apiKey = `fb79e1dd73084533b72be1bc6d99e5c0`
-let newChoose = "General"
+let currentCategory = "General";
+let keyWord = "";
+
 const callApi = async () => {
-    // if( newChoose !== myArrayCategory[index]){
-    //     page = 1
-    //     newChoose = myArrayCategory[index]
-    //     newsList = []
-    // }
-    let url = `https://newsapi.org/v2/top-headlines?country=us&catelogy=${newChoose}&page=${page}&apiKey=${apiKey}`
+    console.log(currentCategory)
+    let url = `https://newsapi.org/v2/top-headlines?country=us&category=${currentCategory}&page=${page}&apiKey=${apiKey}`
     console.log('url:',url)
     let data = await fetch(url)
     let result = await data.json()
@@ -16,7 +14,6 @@ const callApi = async () => {
     render(newsList)
     console.log(newsList)
 }
-
 
 const render = (list) => {
     //use moment js to show publishedAT data
@@ -57,20 +54,20 @@ newButton()
 
 async function searchByCategory(index) {
     console.log(myArrayCategory[index])
-    newChoose = myArrayCategory[index]
-    url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}&category=${myArrayCategory[index]}`;
+    currentCategory = myArrayCategory[index];
+    url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}&category=${currentCategory}`;
     let data = await fetch(url)
     let result = await data.json()
     newList = result.articles
-
     render(newList)
     console.log(url)
 }
 
 //by keyword
+
 async function searchByKeyWord() {
-    let keyWord = document.getElementById("keyWord").value;
-    url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}&q=${keyWord}`;
+    keyWord = document.getElementById("keyWord").value;
+    url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}&q=${keyWord}&category=${currentCategory}`;
     let data = await fetch(url)
     let result = await data.json()
     newList = result.articles
@@ -86,20 +83,43 @@ const viewMore = () => {
 }
 
 //able to search by source
-async function searchBySource() {
-    let source = document.getElementById("searchBySource").value;
-    url = `https://newsapi.org/v2/top-headlines?apiKey=${apiKey}&sources=${source}`;
-    console.log(source)
-    let data = await fetch(url)
-    let result = await data.json()
-    newList = result.articles
-    render(newList)
-    console.log(url)
-}
+// async function searchBySource() {
+//     let source = document.getElementById("searchBySource").value;
+//     url = `https://newsapi.org/v2/top-headlines?apiKey=${apiKey}&sources=${source}`;
+//     console.log(source)
+//     let data = await fetch(url)
+//     let result = await data.json()
+//     newList = result.articles
+//     render(newList)
+//     console.log(url)
+// }
+const renderSource = () => {
+    let sources = newsList.map((item) => item.source.name);
+    let result = {};
+    for (let i = 0; i < sources.length; i++) {
+      if (sources[i] in result) {
+        result[sources[i]]++;
+      } else {
+        result[sources[i]] = 1;
+      }
+    }
+    console.log("result is",result)
+    
+    let keys = Object.keys(result);
+    let sourceHTML = keys.map((key) =>
+          `<input type="checkbox" onchange="searchBySource('${key}')">${key}:${result[key]}`
+      )
+      .join("");
+  
+    document.getElementById("sourceArea").innerHTML = sourceHTML;
+  };
 
+const searchBySource = (source) => {
+    console.log("source?:", source);
+    let filteredList = newsList.filter((item) => item.source.name === source);
+    render(filteredList);
+  };
+  
 
-
-
-//show all news
 
 callApi();

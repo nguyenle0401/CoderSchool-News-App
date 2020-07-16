@@ -7,7 +7,7 @@
     <title>Google News📑</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
+        integrpity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -23,21 +23,22 @@
 
 <body>
     <nav>
-        <h1 class="style_name">Google News</h1>
+        <h1 class="style_name">Google New</h1>
         <div class="style_find">
+            <!-- searchByKeyWord -->
             <input id="keyWord" class="mr-1 border-find" />
             <button type="button" class="btn btn-danger" onclick="searchByKeyWord()"><i
                     class="fas fa-search"></i></button>
-            <!-- <h1 id="pageSize"></h1> -->
         </div>
-        <div class="style_find mt-3 mb-3">
+        <!-- <div class="style_find mt-3 mb-3">
             <input class="mr-1 border-source" id="searchBySource" type="text">
             <button class="btn btn-danger" onclick="searchBySource()">Search by
                 Source</button>
-        </div>
+        </div> -->
+        <div id="sourceArea">source checkbox will come here</div>
+
         <div class="style_find style_catagory" id="categoryButton">CATAGORY</div>
-        <!-- <button class="btn btn-danger" onclick= "loadAllNew()">All News</button> -->
-        </div>
+        
         <div class="style_find1" id="newsListArea"></div>
         <!-- <a href="#"  onclick="viewMore()">More</a> -->
         <button class="btn btn-primary style_find2" onclick="viewMore()">Load More</button>
