@@ -5,12 +5,12 @@
     height: 32px;
 }
 
-/* .style_news{
-display: flex;
-align-items: center;
-justify-content: start;
-
-} */
+.style_catagory{
+    color:red;
+    font-weight: bolder;
+    background-color: rgb(161, 222, 247);
+    margin-bottom: 5px;
+}
 
 .style_title{
     font-size: 25px;

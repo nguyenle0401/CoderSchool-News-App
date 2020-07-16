@@ -1,8 +1,13 @@
 let newsList = []
 let page = 1
 const apiKey = `fb79e1dd73084533b72be1bc6d99e5c0`
-let newChoose = "general"
+let newChoose = "General"
 const callApi = async () => {
+    // if( newChoose !== myArrayCategory[index]){
+    //     page = 1
+    //     newChoose = myArrayCategory[index]
+    //     newsList = []
+    // }
     let url = `https://newsapi.org/v2/top-headlines?country=us&catelogy=${newChoose}&page=${page}&apiKey=${apiKey}`
     console.log('url:',url)
     let data = await fetch(url)
@@ -28,7 +33,7 @@ const render = (list) => {
         <li class="list-group-item">Author: ${item.author}</li>
         </ul>
         <div class="card-body">
-        <a href="${item.url}" class="card-link">Read more</a>
+        <a href="${item.url}" class="card-link btn btn-primary">Read more</a>
         </div>
         </div>
         </div>`
