@@ -64,7 +64,6 @@ body{
     width:100px;
     height: 32px;
 }
-
-footer{
-    boder: 1px solid red;
+.style_item{
+    font-weight: bold;
 }

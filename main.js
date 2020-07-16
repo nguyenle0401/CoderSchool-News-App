@@ -24,14 +24,14 @@ const render = (list) => {
         return `<div class="style_news"><div class="card text-justify" style="width: 50rem;">
         <img src="${item.urlToImage}" class="card-img-top"  alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title style_title"><a href = "${item.url}">${item.title}</h5>
+          <h5 class="card-title style_title"><a href = "${item.url}">${item.title}</a></h5>
           <p class="card-text">${item.content}</p>
         </div>
         <div>
         <ul class="list-group list-group-flush">
         <li class="list-group-item">${moment(item.publishedAt).fromNow()}</li>
-        <li class="list-group-item">Source: ${item.source.name}</li>
-        <li class="list-group-item">Author: ${item.author}</li>
+        <li class="list-group-item "><strong>Source</strong>: ${item.source.name}</li>
+        <li class="list-group-item "><strong>Author</strong>: ${item.author}</li>
         </ul>
         </div>
         <div class="card-body">
