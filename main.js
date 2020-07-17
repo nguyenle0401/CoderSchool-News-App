@@ -129,7 +129,7 @@ const viewMore = () => {
   const render = (list) => {
     //use moment js to show publishedAT data
     let newsHTML = list.map(item => {
-        return `<div class="style_news"><div class="card text-justify" style="width: 20rem;">
+        return `<div class="style_news"><div class="card text-justify" style="width: 25rem;">
         <img src="${item.urlToImage}" class="card-img-top"  alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title style_title"><a href = "${item.url}">${item.title}</a></h5>
