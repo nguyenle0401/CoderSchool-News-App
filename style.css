@@ -24,6 +24,12 @@
     flex-direction: column;
     justify-content: center;
 }
+
+.style_center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .style_find2{
     display: flex;
     align-items: center;
@@ -62,4 +68,34 @@ body{
 }
 .style_item{
     font-weight: bold;
+}
+
+
+.style_source_key{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    text-decoration: row;
+    text-align: right;
+
+}
+
+/* .card-body{
+    max-height: 15rem;
+    min-height:15rem;
+} */
+
+.f-grid {
+    display: flex;
+    /* justify-content: space-between; */
+    margin-left: -1rem;
+    flex-flow: row wrap;
+}
+
+.f-grid-col {
+    flex: 1 0;
+    background-color: green;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
 }

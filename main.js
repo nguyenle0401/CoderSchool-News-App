@@ -12,9 +12,15 @@ const callApi = async () => {
     console.log('url:',url)
     let data = await fetch(url)
     let result = await data.json()
+    console.log("Each page")
+    console.log(result.articles)
     newsList = newsList.concat(result.articles)
     render(newsList)
+    console.log("---Call API---")
     console.log(newsList)
+    newListToSources();
+    renderSource();
+    
 }
 
 //able to search by catagory
@@ -79,33 +85,39 @@ function newListToSources(){
   sources = {};
   for (let i = 0; i < duplicatedSources.length; i++) {
     if (duplicatedSources[i] in sources) {
-      sources[duplicatedSources[i]]++;
+      sources[duplicatedSources[i]].count++;
     } else {
-      sources[duplicatedSources[i]] = 1;
+      sources[duplicatedSources[i]] = {}
+      sources[duplicatedSources[i]].count = 1;
     }
+    sources[duplicatedSources[i]].clicked = false;
   }
 }
 
 
 const renderSource = () => {
-  newListToSources();
 console.log("result is" + JSON.stringify(sources))
     let sourceNames = Object.keys(sources);
-    let sourceHTML = sourceNames.map((sourceName) =>
-          `<input id=${sourceName} type="checkbox" onchange="searchBySource('${sourceName}')">${sourceName}:${sources[sourceName]}`
-      )
+    let sourceHTML = sourceNames.map((sourceName) => {
+          console.log(document.getElementById(sourceName))
+          if(sources[sourceName].clicked)
+              return `<input id=${sourceName} type="checkbox" onchange="searchBySource('${sourceName}')" checked>${sourceName}:${sources[sourceName].count}`
+          else
+              return `<input id=${sourceName} type="checkbox" onchange="searchBySource('${sourceName}')">${sourceName}:${sources[sourceName].count}`
+
+    })
       .join("");
   
-    document.getElementById("sourceArea").innerHTML = sourceHTML;
+    document.getElementById("dropDownList").innerHTML = sourceHTML;
   };
   
 
 const searchBySource = (sourceName) => {
-
+    newListToSources();
     console.log("source?:", sourceName);
+    sources[sourceName].clicked = !sources[sourceName].clicked
     let filteredList = newsList.filter((item) => item.source.name === sourceName);
     render(filteredList);
-    document.getElementById(sourceName).checked = true;
   };
 
 // able to load more articles
@@ -117,7 +129,7 @@ const viewMore = () => {
   const render = (list) => {
     //use moment js to show publishedAT data
     let newsHTML = list.map(item => {
-        return `<div class="style_news"><div class="card text-justify" style="width: 50rem;">
+        return `<div class="style_news"><div class="card text-justify" style="width: 20rem;">
         <img src="${item.urlToImage}" class="card-img-top"  alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title style_title"><a href = "${item.url}">${item.title}</a></h5>
@@ -135,7 +147,7 @@ const viewMore = () => {
         </div>
         </div>
         </div>`
-    })
+    }).join('')
     document.getElementById("newsListArea").innerHTML = newsHTML
     renderSource();
 }
